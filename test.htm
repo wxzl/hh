@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>vuetest</title>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src='https://unpkg.com/vue@2.0.5/dist/vue.js'></script>
+</head>
+
+<body>
+
+    <div id="box1">
+        <input type="text" @click="handInput" v-model="mytext">
+        <ul v-for="(item,index) in list" :key="item.index">
+            <li>
+                {{item}}---{{index}}
+            </li>
+        </ul>
+        <input type="text" v-model.trim="mytext">
+        {{mytext}}
+    </div>
+
+    <script type="text/javascript">
+        var vm = new Vue({
+            el: "#box1",
+            data: {
+                list: ["aa", "bb", "cc", "dd", "addf", "ddsa"],
+                mytext: "aa"
+            },
+            methods: {
+                handInput() {
+                    this.list = this.list.filter((item) => item.indexOf(this.mytext) > -1)
+                }
+            },
+
+
+        })
+        //var arr = [1, 2, 3, 4, 5];
+        var arr = ["aa", "bb", "cc", "dd", "addf", "ddsa"]
+        var newarr = arr.filter((item) =>
+            item.indexOf("a") > -1);
+        console.log(newarr)
+    </script>
+
+</body>
+
+</html>
